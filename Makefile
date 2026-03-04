@@ -103,6 +103,7 @@ CPP_FLAGS           := $(INCLUDE_FLAGS) $(DEFINE_FLAGS) -P -MMD -MP -undef -Wall
 RED := $(shell tput setaf 1)
 GREEN := $(shell tput setaf 2)
 BLUE := $(shell tput setaf 4)
+YELLOW := $(shell tput setaf 3)
 RESET := $(shell tput sgr0)
 
 # Ruleset
@@ -149,11 +150,11 @@ motd:
 	@echo "${RED}	⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⡇⠀⢸⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀${RESET}"
 	@echo "${RED}	⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⡇⠀⢸⣿⣿⣿⣿⡿⠀⠀⠀⠀⠀⠀${RESET}"
 	@echo "${RED}	⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⡇⠀⢸⣿⣿⣿⣿⠇⠀⠀⠀⠀⠀⠀${RESET}"
-	@echo "${RED}	⠀⠀⠀⠀⠀⠀⠀⣀⣤⠀⣿⣿⣿⣿⡇⠀⠈⠉⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀${RESET}"
-	@echo "${RED}	⠀⢀⣠⣤⣶⣾⣿⣿⡿⠀⣿⣿⣿⣿⡇⠀⢰⣶⣿⣿⣿⠿⠿⢿⣶⣦⣤⡀${RESET}"
-	@echo "${RED}	⢰⣿⣿⣿⡿⠛⠉⢀⣀⠀⣿⣿⣿⣿⡇⠀⠘⠋⠉⠀⣀⣠⣴⣾⣿⣿⣿⠇${RESET}"
-	@echo "${RED}	⠈⠻⠿⣿⣿⣿⣿⣿⠿⠀⣿⣿⣿⣿⡇⠀⢠⣶⣾⣿⣿⡿⠿⠟⠋⠉⠀⠀${RESET}"
-	@echo "${RED}	⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠛⠿⢿⡇⠀⠸⠟⠛⠋⠁⠀⠀⠀⠀⠀⠀⠀${RESET}"
+	@echo "${YELLOW}	⠀⠀⠀⠀⠀⠀⠀⣀⣤⠀${RED}⣿⣿⣿⣿⡇${GREEN}⠈⠉⠉⠉⠁${RESET}"
+	@echo "${YELLOW}	⠀⢀⣠⣤⣶⣾⣿⣿⡿⠀${RED}⣿⣿⣿⣿⡇${GREEN}⢰⣶⣿⣿⣿⠿⠿${BLUE}⢿⣶⣦⣤⡀${RESET}"
+	@echo "${YELLOW}	⢰⣿⣿⣿⡿⠛⠉⢀⣀⠀${RED}⣿⣿⣿⣿⡇${GREEN}⠘⠋⠉⠀⣀⣠⣴⣾${BLUE}⣿⣿⣿⠇${RESET}"
+	@echo "${YELLOW}	⠈⠻⠿⣿⣿⣿⣿⣿⠿⠀${RED}⣿⣿⣿⣿⡇${GREEN}⢠⣶⣾⣿⣿⡿⠿⠟${BLUE}⠋⠉${RESET}"
+	@echo "${YELLOW}	⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀${RED}⠙⠛⠿⢿⡇${YELLOW}⠸⠟${GREEN}⠛⠋⠁${RESET}"
 	@echo "${BLUE}-----------------------------------------${RESET}"
 	@echo "${GREEN}Game: ${RESET}$(GAME_NAME)"
 	@echo "${GREEN}PSYQ Version: ${RESET}$(PSYQ_VERSION)"
