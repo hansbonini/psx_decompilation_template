@@ -1,2 +1,6 @@
 tools/python
 iso/USA
+iso/*.bin
+iso/*.cue
+iso/*.xml
+iso/*.iso
