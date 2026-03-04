@@ -123,7 +123,7 @@ default: help
 
 # Generate disassembly
 generate:
-	$(SPLAT) -c "$(CONFIG_DIR)/$(GAME_VERSION_DIR).yaml"
+	$(PYTHON_BIN) "$(SPLAT_DIR)/split.py" "$(CONFIG_DIR)/$(GAME_VERSION_DIR)/$(GAME_EXECUTABLE).yaml"
 
 # Setup environment
 setup: git-submodules python-setup tools-setup mkpsxiso-extract splat-setup
@@ -156,6 +156,7 @@ yq-setup:
 mkpsxiso-extract:
 	@echo "${BLUE}>>> ${GREEN}Extracting ISO contents...${RESET}"
 	$(DUMPSXISO) -x "$(ISO_DIR)/$(GAME_VERSION_DIR)" -s "$(ISO_DIR)/$(GAME_NAME).xml" "${ISO_DIR}/${GAME_NAME}.cue"
+	sha256sum "$(ISO_DIR)/$(GAME_NAME).cue" > "$(CONFIG_DIR)/$(GAME_VERSION_DIR)/$(GAME_EXECUTABLE).sha256"
 
 ## Generate Splat configuration file and set up paths
 splat-setup:
@@ -174,7 +175,7 @@ splat-setup:
 	$(YQ) -i '.options.asm_path = "$(ASM_DIR)/${GAME_VERSION_DIR}"' "$(CONFIG_DIR)/$(GAME_VERSION_DIR)/$(GAME_EXECUTABLE).yaml"
 	$(YQ) -i '.options.src_path = "$(SRC_DIR)/${GAME_VERSION_DIR}"' "$(CONFIG_DIR)/$(GAME_VERSION_DIR)/$(GAME_EXECUTABLE).yaml"
 	$(YQ) -i '.options.build_path = "$(BUILD_DIR)/${GAME_VERSION_DIR}"' "$(CONFIG_DIR)/$(GAME_VERSION_DIR)/$(GAME_EXECUTABLE).yaml"
-	$(YQ) -i '.options.assets_path = "$(ASSETS_DIR)/${GAME_VERSION_DIR}"' "$(CONFIG_DIR)/$(GAME_VERSION_DIR)/$(GAME_EXECUTABLE).yaml"
+	$(YQ) -i '.options.asset_path = "$(ASSETS_DIR)/${GAME_VERSION_DIR}"' "$(CONFIG_DIR)/$(GAME_VERSION_DIR)/$(GAME_EXECUTABLE).yaml"
 	$(YQ) -i '.options.extensions_path = "$(SPLAT_EXT_DIR)"' "$(CONFIG_DIR)/$(GAME_VERSION_DIR)/$(GAME_EXECUTABLE).yaml"
 
 ## Python setup
