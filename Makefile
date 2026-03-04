@@ -135,9 +135,12 @@ python-deps:
 help: motd
 	@echo "${GREEN}Usage: make [command]${RESET}"
 	@echo "${GREEN}Available commands:${RESET}"
-	@echo "${GREEN}  make ${RESET}setup${GREEN}          - Set up the development environment (Python virtual environment and dependencies)${RESET}"
-	@echo "${GREEN}  make ${RESET}clean${GREEN}          - Clean build artifacts${RESET}"
-	@echo "${GREEN}  make ${RESET}help${GREEN}           - Show this help message${RESET}"
+	@echo "${BLUE}  make ${RESET}setup${GREEN}          - Set up the development environment (Python virtual environment and dependencies)${RESET}"
+	@echo "${BLUE}  make ${RESET}generate${GREEN}       - Generate disassembly${RESET}"
+	@echo "${BLUE}  make ${RESET}report${GREEN}         - Generate a report of the comparison results${RESET}"
+	@echo "${BLUE}  make ${RESET}build${GREEN}          - Build the project (assemble and link)${RESET}"
+	@echo "${BLUE}  make ${RESET}clean${GREEN}          - Clean build artifacts${RESET}"
+	@echo "${BLUE}  make ${RESET}help${GREEN}           - Show this help message${RESET}"
 
 ## Display a message of the day (MOTD)
 motd:
@@ -155,6 +158,9 @@ motd:
 	@echo "${YELLOW}	⢰⣿⣿⣿⡿⠛⠉⢀⣀⠀${RED}⣿⣿⣿⣿⡇${GREEN}⠘⠋⠉⠀⣀⣠⣴⣾${BLUE}⣿⣿⣿⠇${RESET}"
 	@echo "${YELLOW}	⠈⠻⠿⣿⣿⣿⣿⣿⠿⠀${RED}⣿⣿⣿⣿⡇${GREEN}⢠⣶⣾⣿⣿⡿⠿⠟${BLUE}⠋⠉${RESET}"
 	@echo "${YELLOW}	⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀${RED}⠙⠛⠿⢿⡇${YELLOW}⠸⠟${GREEN}⠛⠋⠁${RESET}"
+	@echo ""
+	@echo "${GREEN}Powered by:"
+	@echo "${RED}https://decomp.me ${GREEN}and ${RED}https://decomp.dev${RESET}"
 	@echo "${BLUE}-----------------------------------------${RESET}"
 	@echo "${GREEN}Game: ${RESET}$(GAME_NAME)"
 	@echo "${GREEN}PSYQ Version: ${RESET}$(PSYQ_VERSION)"
