@@ -1,0 +1,21 @@
+[submodule "tools/splat"]
+	path = tools/splat
+	url = https://github.com/ethteck/splat
+[submodule "tools/psx_psyq_signatures"]
+	path = tools/psx_psyq_signatures
+	url = https://github.com/lab313ru/psx_psyq_signatures
+[submodule "tools/m2c"]
+	path = tools/m2c
+	url = https://github.com/matt-kempster/m2c
+[submodule "tools/m2ctx"]
+	path = tools/m2ctx
+	url = https://github.com/ethteck/m2ctx
+[submodule "tools/maspsx"]
+	path = tools/maspsx
+	url = https://github.com/mkst/maspsx
+[submodule "tools/mkpsxiso"]
+	path = tools/mkpsxiso
+	url = https://github.com/Lameguy64/mkpsxiso
+[submodule "tools/objdiff"]
+	path = tools/objdiff
+	url = https://github.com/encounter/objdiff.git
