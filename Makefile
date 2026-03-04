@@ -126,7 +126,7 @@ generate:
 	$(PYTHON_BIN) "$(SPLAT_DIR)/split.py" "$(CONFIG_DIR)/$(GAME_VERSION_DIR)/$(GAME_EXECUTABLE).yaml"
 
 # Setup environment
-setup: git-submodules python-setup tools-setup mkpsxiso-extract splat-setup
+setup: git-submodules python-setup tools-setup psyq-setup mkpsxiso-extract splat-setup
 
 ## Clean build artifacts
 clean:
@@ -151,6 +151,22 @@ yq-setup:
 	@echo "${BLUE}>>> ${GREEN}Setting up yq...${RESET}"
 	wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O tools/yq &&\
     chmod +x tools/yq
+
+## Set up PSYQ toolchain
+psyq-setup:
+	@echo "${BLUE}>>> ${GREEN}Setting up PSYQ toolchain...${RESET}"
+	@if [ ! -d "$(TOOLS_DIR)/gcc-$(PSYQ_VERSION)-psx" ]; then \
+		echo "${YELLOW}PSYQ toolchain not found.${RESET}"; \
+		mkdir -p "$(TOOLS_DIR)/gcc-$(PSYQ_VERSION)-psx"; \
+		if [ "$(PSYQ_VERSION)" = "2.7.2" ]; then \
+			echo "${YELLOW}Downloading PSYQ 2.7.2 toolchain...${RESET}"; \
+			wget -q https://github.com/decompals/old-gcc/releases/download/0.13/gcc-2.7.2-psx.tar.gz -O /tmp/gcc-2.7.2-psx.tar.gz; \
+		fi; \
+		tar -xf /tmp/gcc-$(PSYQ_VERSION)-psx.tar.gz -C "$(TOOLS_DIR)/gcc-$(PSYQ_VERSION)-psx"; \
+		rm /tmp/gcc-$(PSYQ_VERSION)-psx.tar.gz; \
+	else \
+		echo "${GREEN}PSYQ toolchain already set up.${RESET}"; \
+	fi
 
 ## Extract ISO contents using mkpsxiso's dumpsxiso tool
 mkpsxiso-extract:
@@ -193,7 +209,7 @@ python-deps:
 
 ## Show available commands
 help: motd
-	@echo "${GREEN}Usage: make [command]${RESET}"
+	@echo "${GREEN}Usage:${BLUE} make ${RESET}[command]"
 	@echo "${GREEN}Available commands:${RESET}"
 	@echo "${BLUE}  make ${RESET}setup${GREEN}          - Set up the development environment (Python virtual environment and dependencies)${RESET}"
 	@echo "${BLUE}  make ${RESET}generate${GREEN}       - Generate disassembly${RESET}"
